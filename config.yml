@@ -1,1 +1,4 @@
 url: http://localhost:8180/
+port: 8180
+path: /
+dependencies: 
