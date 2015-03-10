@@ -52,3 +52,5 @@ dependencies {
         exclude group: 'org.eclipse.jdt.core.compiler', module: 'ecj'
     }
 }
+
+task stage(dependsOn: [assemble])
