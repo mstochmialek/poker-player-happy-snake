@@ -10,7 +10,7 @@ repositories {
     mavenCentral()
 }
 
-def final HTTP_PORT = System.getenv('PORT').toInteger() ?: 8080
+def final HTTP_PORT = System.getenv('PORT').toInteger() ? System.getenv('PORT').toInteger() : 8080
 
 // change this by n*100 to offset the ports of the tomcat server
 // don't forget to change the port accordingly in config.yml too!
