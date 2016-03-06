@@ -2,20 +2,20 @@ package org.leanpoker.player
 
 class Player {
 
-    static final String VERSION = 'Default Groovy folding player 1.6';
+    static final String VERSION = 'Leanforge 1.7';
 
 
     static int betRequest(def gameState) {
         try {
             def myHand = hand2(gameState);
-            return doBetRequest(myHand, gameState.minimum_raise)
+            return doBetRequest(myHand, [], gameState.minimum_raise)
         } catch (def e) {
             return 0
         }
     }
 
 
-    static int doBetRequest(List<Card> myHand, int minimum) {
+    static int doBetRequest(List<Card> myHand, List<Card> table, int minimum) {
         if (myHand.collect {it.rank}.any { it == 'A' || it == 'K' || it == 'Q' || it == 'J'}) {
             return minimum
         }
