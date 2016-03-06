@@ -44,5 +44,13 @@ class PlayerTestSpock extends Specification {
 		new Card(Rank.C02, Suit.CLUBS) | new Card(Rank.C03, Suit.DIAMONDS) | 0
 	}
 
+	def "should do randomized bet"() {
+		when:
+		def betResult = Player.doRandomizedBetRequest([new Card(Rank.ACE, Suit.CLUBS), new Card(Rank.ACE, Suit.DIAMONDS)], [], 10)
+
+		then:
+		betResult == 10 || betResult == Integer.MAX_VALUE
+	}
+
 
 }
