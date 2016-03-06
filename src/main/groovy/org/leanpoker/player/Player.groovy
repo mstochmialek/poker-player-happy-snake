@@ -2,7 +2,7 @@ package org.leanpoker.player
 
 class Player {
 
-    static final String VERSION = 'Leanforge 2.3';
+    static final String VERSION = 'Leanforge 2.5';
 
     static int betRequest(def gameState) {
         try {
@@ -42,8 +42,19 @@ class Player {
 
             Figure figure = state.figure();
             if (figure == Figure.HIGHCARD) {
+                if (table.size() == 3 && prob > 70) {
+                    return minimum
+                }
+
+                if (table.size() == 4 && prob > 80) {
+                    return minimum
+                }
+
                 return 0;
             } else {
+                if (figure.higher(Figure.TWO_PAIR)) {
+                    return minimum + 20
+                }
                 return minimum;
             }
         }
