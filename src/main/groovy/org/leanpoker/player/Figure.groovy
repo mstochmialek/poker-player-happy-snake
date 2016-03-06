@@ -6,6 +6,9 @@ public enum Figure {
         Card three = cards.find {cards.count(it) >= 3}
         three != null && cards.any { three != it && cards.count(it) >= 2}
     }),
+    FLUSH({List<Card> cards ->
+        Suit.values().any { suit -> cards.count{ card -> card.suit == suit } >= 5}
+    }),
     THREE({ List<Card> cards -> hasMany(cards, 3) }),
     TWO_PAIR ({ List<Card> cards ->
         Card firstPair = cards.find {cards.count(it) >= 2}

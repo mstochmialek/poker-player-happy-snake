@@ -87,6 +87,49 @@ class FigureTestSpock extends Specification {
 		Figure.basingOn(cards) == Figure.FULL
 	}
 
+	def "flush: less than 5 cards"() {
+		given:
+		def cards = [
+				new Card(ACE, HEARTS),
+				new Card(KING, HEARTS),
+				new Card(QUEEN, HEARTS),
+				new Card(JACK, HEARTS)
+		];
+
+		expect:
+		Figure.basingOn(cards) == Figure.HIGHCARD
+	}
+
+	def "flush: 5 cards"() {
+		given:
+		def cards = [
+				new Card(ACE, HEARTS),
+				new Card(KING, HEARTS),
+				new Card(QUEEN, HEARTS),
+				new Card(JACK, HEARTS),
+				new Card(C09, HEARTS)
+		];
+
+		expect:
+		Figure.basingOn(cards) == Figure.FLUSH
+	}
+
+	def "flush: more than 5 cards"() {
+		given:
+		def cards = [
+				new Card(ACE, HEARTS),
+				new Card(KING, HEARTS),
+				new Card(QUEEN, HEARTS),
+				new Card(JACK, HEARTS),
+				new Card(C09, HEARTS),
+				new Card(C09, DIAMONDS),
+				new Card(C02, HEARTS)
+		];
+
+		expect:
+		Figure.basingOn(cards) == Figure.FLUSH
+	}
+
 	def "higher"() {
 		expect:
 		!Figure.PAIR.higher(Figure.FULL)
