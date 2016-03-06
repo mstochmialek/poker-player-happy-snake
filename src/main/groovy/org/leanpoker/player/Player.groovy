@@ -33,7 +33,7 @@ class Player {
         def prob = Probability.hand(myHand);
 
         if (table.isEmpty()) {
-            if (prob > 75) {
+            if (prob > 60) {
                 return minimum;
             } else {
                 return 0
@@ -56,11 +56,17 @@ class Player {
 
                 return 0;
             } else {
+
+                if (figure.higher(Figure.THREE)) {
+                    return Integer.MAX_VALUE
+                }
+
+
                 if (figure.higher(Figure.TWO_PAIR)) {
                     return minimum + 20
                 }
 
-                if (figure == Figure.PAIR && prob < 75) {
+                if (figure == Figure.PAIR) {
                     return 0
                 }
                 return minimum;
