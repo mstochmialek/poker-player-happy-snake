@@ -2,13 +2,17 @@ package org.leanpoker.player
 
 class Player {
 
-    static final String VERSION = 'Leanforge 2.5';
+    static final String VERSION = 'Leanforge 2.7';
+
+    static player = [stack: 100000];
 
     static int betRequest(def gameState) {
         try {
             def myHand = hand2(gameState);
             def table = table2(gameState);
             def minimum = 0
+
+            player = currentPlayer(gameState)
 
             if (gameState.bet_index == 0) {
                 minimum = gameState.minimum_raise;
@@ -54,6 +58,10 @@ class Player {
             } else {
                 if (figure.higher(Figure.TWO_PAIR)) {
                     return minimum + 20
+                }
+
+                if (figure == Figure.PAIR && (minimum >= (player.stack/2))) {
+                    return 0
                 }
                 return minimum;
             }
