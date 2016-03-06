@@ -20,7 +20,7 @@ class CardTestSpock extends Specification {
 
 		expect:
 		card.suit == "spades"
-		card.rank == "4"
+		card.rank == Rank.C04
 	}
 
 	def "Equals"() {

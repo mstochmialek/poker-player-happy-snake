@@ -4,16 +4,22 @@ import groovy.transform.EqualsAndHashCode
 
 @EqualsAndHashCode(includes = "rank")
 class Card {
-    String rank;
+    Rank rank;
     String suit;
 
     def Card(def json) {
-        rank = json.rank;
+        rank = Rank.valueOfName(json.rank);
         suit = json.suit;
     }
 
-    def Card(String rank, String suit) {
+    def Card(Rank rank, String suit) {
         this.rank = rank;
         this.suit = suit;
     }
+    def Card(String rank, String suit) {
+        this.rank = Rank.valueOfName(rank);
+        this.suit = suit;
+    }
+
+
 }
