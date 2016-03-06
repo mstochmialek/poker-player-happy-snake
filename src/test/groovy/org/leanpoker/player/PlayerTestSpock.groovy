@@ -18,7 +18,6 @@ class PlayerTestSpock extends Specification {
 		Player.betRequest(gameState) == 240
 	}
 
-
 	@Unroll
 	def "for #a and #b should bet #expectedBet"(Card a, Card b, int expectedBet) {
 		given:
@@ -32,11 +31,11 @@ class PlayerTestSpock extends Specification {
 
 		where:
 		a | b | expectedBet
-		new Card(Rank.ACE, Suit.CLUBS) | new Card(Rank.ACE, Suit.DIAMONDS) | Integer.MAX_VALUE
-		new Card(Rank.KING, Suit.CLUBS) | new Card(Rank.KING, Suit.DIAMONDS) | Integer.MAX_VALUE
-		new Card(Rank.JACK, Suit.CLUBS) | new Card(Rank.JACK, Suit.DIAMONDS) | Integer.MAX_VALUE
-		new Card(Rank.QUEEN, Suit.CLUBS) | new Card(Rank.QUEEN, Suit.DIAMONDS) | Integer.MAX_VALUE
-		new Card(Rank.C09, Suit.CLUBS) | new Card(Rank.C09, Suit.DIAMONDS) | Integer.MAX_VALUE
+		new Card(Rank.ACE, Suit.CLUBS) | new Card(Rank.ACE, Suit.DIAMONDS) | 10
+		new Card(Rank.KING, Suit.CLUBS) | new Card(Rank.KING, Suit.DIAMONDS) | 10
+		new Card(Rank.JACK, Suit.CLUBS) | new Card(Rank.JACK, Suit.DIAMONDS) | 10
+		new Card(Rank.QUEEN, Suit.CLUBS) | new Card(Rank.QUEEN, Suit.DIAMONDS) | 10
+		new Card(Rank.C09, Suit.CLUBS) | new Card(Rank.C09, Suit.DIAMONDS) | 10
 		new Card(Rank.ACE, Suit.CLUBS) | new Card(Rank.C03, Suit.DIAMONDS) | 10
 		new Card(Rank.KING, Suit.CLUBS) | new Card(Rank.C03, Suit.DIAMONDS) | 10
 		new Card(Rank.QUEEN, Suit.CLUBS) | new Card(Rank.C03, Suit.DIAMONDS) | 10

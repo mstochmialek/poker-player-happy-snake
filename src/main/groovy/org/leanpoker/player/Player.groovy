@@ -3,40 +3,41 @@ package org.leanpoker.player
 class Player {
 
     static final String VERSION = 'Leanforge 1.8';
-    static r = new Random()
 
     static int betRequest(def gameState) {
         try {
             def myHand = hand2(gameState);
-            return doRandomizedBetRequest(myHand, [], gameState.minimum_raise)
+            def minimum = 0
+
+            if (gameState.bet_index == 0) {
+                minimum = gameState.minimum_raise;
+            } else if (gameState.bet_index == 1) {
+                minimum = gameState.current_buy_in - currentPlayer(gameState).bet + gameState.minimum_raise;
+            } else {
+                minimum = gameState.current_buy_in - currentPlayer(gameState).bet + gameState.minimum_raise;
+            }
+
+            return doBetRequest(myHand, [], minimum)
         } catch (def e) {
             return 0
         }
     }
 
-    static int doRandomizedBetRequest(List<Card> myHand, List<Card> table, int minimum) {
-        def randomizer = {
-            if (r.nextBoolean()) {
-                return Integer.MAX_VALUE
-            }
-            minimum
-        }
-        return doBetRequest(myHand, [], minimum, randomizer)
-    }
 
     static int doBetRequest(List<Card> myHand, List<Card> table, int minimum) {
-        return doBetRequest(myHand, table, minimum, {return Integer.MAX_VALUE})
-    }
+        def prob = Probability.hand(myHand);
 
-
-    static int doBetRequest(List<Card> myHand, List<Card> table, int minimum, def valueProvider) {
-        if (myHand[0] == myHand[1]) {
-            return valueProvider()
+        if (prob > 45) {
+            return minimum;
         }
 
-        if (myHand.collect {it.rank}.any { it == Rank.ACE || it == Rank.KING || it == Rank.QUEEN || it == Rank.JACK}) {
-            return minimum
-        }
+//        if (myHand[0] == myHand[1]) {
+//            return minimum + 5;
+//        }
+//
+//        if (myHand.collect {it.rank}.any { it == Rank.ACE || it == Rank.KING || it == Rank.QUEEN || it == Rank.JACK}) {
+//            return minimum
+//        }
 
         0
     }
