@@ -6,14 +6,22 @@ class Player {
 
 
     static int betRequest(def gameState) {
+        try {
+            def myHand = hand2(gameState);
+            return doBetRequest(myHand, gameState.minimum_raise)
+        } catch (def e) {
+            return 0
+        }
+    }
 
-        String myHand = hand(gameState);
-        if (myHand.contains('A') || myHand.contains('K') || myHand.contains('Q') || myHand.contains('J')) {
-            return gameState.minimum_raise
+
+    static int doBetRequest(List<Card> myHand, int minimum) {
+        if (myHand.collect {it.rank}.any { it == 'A' || it == 'K' || it == 'Q' || it == 'J'}) {
+            return minimum
         }
 
         if (myHand[0] == myHand[1]) {
-            return currentPlayer(gameState).stack
+            return Integer.MAX_VALUE
         }
 
         0
