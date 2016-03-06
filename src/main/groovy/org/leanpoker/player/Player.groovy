@@ -2,7 +2,7 @@ package org.leanpoker.player
 
 class Player {
 
-    static final String VERSION = 'Leanforge 1.8';
+    static final String VERSION = 'Leanforge 2.0';
 
     static int betRequest(def gameState) {
         try {
