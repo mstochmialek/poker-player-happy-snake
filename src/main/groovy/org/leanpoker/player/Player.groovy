@@ -2,7 +2,7 @@ package org.leanpoker.player
 
 class Player {
 
-    static final String VERSION = 'Default Groovy folding player 1.1';
+    static final String VERSION = 'Default Groovy folding player 1.2';
 
 
     static int betRequest(def gameState) {
