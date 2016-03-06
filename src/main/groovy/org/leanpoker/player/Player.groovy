@@ -2,13 +2,13 @@ package org.leanpoker.player
 
 class Player {
 
-    static final String VERSION = 'Default Groovy folding player 1.2';
+    static final String VERSION = 'Default Groovy folding player 1.5';
 
 
     static int betRequest(def gameState) {
 
         String myHand = hand(gameState);
-        if (myHand.contains('A') || myHand.contains('K')) {
+        if (myHand.contains('A') || myHand.contains('K') || myHand.contains('Q') || myHand.contains('J')) {
             return gameState.minimum_raise
         }
 
