@@ -2,7 +2,7 @@ package org.leanpoker.player
 
 class Player {
 
-    static final String VERSION = 'Leanforge 2.0';
+    static final String VERSION = 'Leanforge 2.1';
 
     static int betRequest(def gameState) {
         try {
@@ -11,10 +11,10 @@ class Player {
 
             if (gameState.bet_index == 0) {
                 minimum = gameState.minimum_raise;
-            } else if (gameState.bet_index == 1) {
+            } else if (gameState.bet_index < 4) {
                 minimum = gameState.current_buy_in - currentPlayer(gameState).bet + gameState.minimum_raise;
             } else {
-                minimum = gameState.current_buy_in - currentPlayer(gameState).bet + gameState.minimum_raise;
+                minimum = gameState.current_buy_in - currentPlayer(gameState).bet;
             }
 
             return doBetRequest(myHand, [], minimum)
