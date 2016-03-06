@@ -14,12 +14,11 @@ class ProbabilityTestSpock extends Specification {
 
 	def "should return hand probability"() {
 		given:
-		def state = new GameState();
-		state.hand = new ArrayList<>();
-		state.hand.add(new Card(Rank.C10, Suit.CLUBS));
-		state.hand.add(new Card(Rank.C05, Suit.CLUBS));
+		def hand = new ArrayList<>();
+		hand.add(new Card(Rank.C10, Suit.CLUBS));
+		hand.add(new Card(Rank.C05, Suit.CLUBS));
 
 		expect:
-		Probability.hand(state) == 47
+		Probability.hand(hand) == 47
 	}
 }
