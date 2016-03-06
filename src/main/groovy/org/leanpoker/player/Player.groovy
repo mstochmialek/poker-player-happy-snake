@@ -33,7 +33,7 @@ class Player {
         def prob = Probability.hand(myHand);
 
         if (table.isEmpty()) {
-            if (prob > 60) {
+            if (prob > 75) {
                 return minimum;
             } else {
                 return 0
