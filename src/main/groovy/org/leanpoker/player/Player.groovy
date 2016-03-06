@@ -32,12 +32,6 @@ class Player {
         gameState.players[gameState.in_action]
     }
 
-    static String hand(def gameState) {
-        List myCarts = currentPlayer(gameState).hole_cards;
-
-        myCarts[0].rank + myCarts[1].rank;
-    }
-
     static List<Card> hand2(def gameState) {
         List myCarts = currentPlayer(gameState).hole_cards;
 
