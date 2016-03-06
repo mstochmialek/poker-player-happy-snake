@@ -10,7 +10,6 @@ class Player {
             def myHand = hand2(gameState);
             return doBetRequest(myHand, [], gameState.minimum_raise)
         } catch (def e) {
-            e.printStackTrace()
             return 0
         }
     }
