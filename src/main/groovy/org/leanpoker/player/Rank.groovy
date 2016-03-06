@@ -24,4 +24,9 @@ public enum Rank {
     static Rank valueOfName( String name ) {
         values().find { it.value == name }
     }
+
+
+    boolean higher(Rank other) {
+        this.compareTo(other) < 0;
+    }
 }

@@ -23,5 +23,9 @@ class Card {
         this.suit = Suit.valueOfName(suit);
     }
 
+    boolean higher(Card other) {
+        this.rank.higher(other.rank) ||
+                this.rank == other.rank && this.suit.higher(other.suit)
+    }
 
 }
