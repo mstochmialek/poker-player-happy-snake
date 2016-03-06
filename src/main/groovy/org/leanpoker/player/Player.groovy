@@ -2,7 +2,7 @@ package org.leanpoker.player
 
 class Player {
 
-    static final String VERSION = 'Leanforge 2.2';
+    static final String VERSION = 'Leanforge 2.3';
 
     static int betRequest(def gameState) {
         try {
@@ -29,7 +29,7 @@ class Player {
         def prob = Probability.hand(myHand);
 
         if (table.isEmpty()) {
-            if (prob > 50) {
+            if (prob > 60) {
                 return minimum;
             } else {
                 return 0
