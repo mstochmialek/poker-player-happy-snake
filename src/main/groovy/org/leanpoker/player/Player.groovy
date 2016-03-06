@@ -7,6 +7,7 @@ class Player {
     static int betRequest(def gameState) {
         try {
             def myHand = hand2(gameState);
+            def table = table2(gameState);
             def minimum = 0
 
             if (gameState.bet_index == 0) {
@@ -17,7 +18,7 @@ class Player {
                 minimum = gameState.current_buy_in - currentPlayer(gameState).bet;
             }
 
-            return doBetRequest(myHand, [], minimum)
+            return doBetRequest(myHand, table, minimum)
         } catch (def e) {
             return 0
         }
@@ -27,8 +28,24 @@ class Player {
     static int doBetRequest(List<Card> myHand, List<Card> table, int minimum) {
         def prob = Probability.hand(myHand);
 
-        if (prob > 50) {
-            return minimum;
+        if (table.isEmpty()) {
+            if (prob > 50) {
+                return minimum;
+            } else {
+                return 0
+            }
+        } else {
+            def state = new GameState(
+                    hand: myHand,
+                    table: table
+            )
+
+            Figure figure = state.figure();
+            if (figure == Figure.HIGHCARD) {
+                return 0;
+            } else {
+                return minimum;
+            }
         }
 
 //        if (myHand[0] == myHand[1]) {
@@ -52,6 +69,11 @@ class Player {
         return myCarts.collect( { new Card(it)});
     }
 
+    static List<Card> table2(def gameState) {
+        List tableCarts = gameState.community_cards;
+
+        return tableCarts.collect({ new Card(it) });
+    }
 
     static void showdown(def gameState) {
     }

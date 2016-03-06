@@ -18,6 +18,14 @@ class PlayerTestSpock extends Specification {
 		Player.betRequest(gameState) == 240
 	}
 
+	def "No table"() {
+		given:
+		def gameState = new JsonSlurper().parseText(new File("gameStateWithoutTable.json").text)
+
+		expect:
+		Player.betRequest(gameState) == 240
+	}
+
 	@Unroll
 	def "for #a and #b should bet #expectedBet"(Card a, Card b, int expectedBet) {
 		given:
