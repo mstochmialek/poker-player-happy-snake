@@ -19,7 +19,7 @@ class CardTestSpock extends Specification {
 		def card = new Card(cardJson);
 
 		expect:
-		card.suit == "spades"
+		card.suit == Suit.SPADES
 		card.rank == Rank.C04
 	}
 

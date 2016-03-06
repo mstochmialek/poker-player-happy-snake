@@ -1,6 +1,11 @@
 package org.leanpoker.player
 
 import spock.lang.Specification
+
+import static org.leanpoker.player.Rank.*
+import static org.leanpoker.player.Suit.*
+import static org.leanpoker.player.Suit.CLUBS
+
 /**
  * Java/Groovy unit test using the Spock framework.
  * https://code.google.com/p/spock/
@@ -11,11 +16,11 @@ class FigureTestSpock extends Specification {
 		given:
 
 		def cards = [
-				new Card(Rank.KING, "hearts"),
-				new Card(Rank.KING, "spades"),
-				new Card(Rank.KING, "diamonds"),
-				new Card(Rank.KING, "clubs"),
-				new Card(Rank.C04, "clubs")
+				new Card(KING, HEARTS),
+				new Card(KING, SPADES),
+				new Card(KING, DIAMONDS),
+				new Card(KING, CLUBS),
+				new Card(C04, CLUBS)
 		];
 
 		expect:
@@ -26,11 +31,11 @@ class FigureTestSpock extends Specification {
 		given:
 
 		def cards = [
-				new Card(Rank.KING, "hearts"),
-				new Card(Rank.C04, "hearts"),
-				new Card(Rank.KING, "spades"),
-				new Card(Rank.C03, "diamonds"),
-				new Card(Rank.KING, "clubs")
+				new Card(KING, HEARTS),
+				new Card(C04, HEARTS),
+				new Card(KING, SPADES),
+				new Card(C03, DIAMONDS),
+				new Card(KING, CLUBS)
 		];
 
 		expect:
@@ -41,11 +46,11 @@ class FigureTestSpock extends Specification {
 		given:
 
 		def cards = [
-				new Card(Rank.C04, "hearts"),
-				new Card(Rank.KING, "spades"),
-				new Card(Rank.C03, "diamonds"),
-				new Card(Rank.C10, "diamonds"),
-				new Card(Rank.KING, "clubs")
+				new Card(C04, HEARTS),
+				new Card(KING, SPADES),
+				new Card(C03, DIAMONDS),
+				new Card(C10, DIAMONDS),
+				new Card(KING, CLUBS)
 		];
 
 		expect:
