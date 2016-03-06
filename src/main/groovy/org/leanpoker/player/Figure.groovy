@@ -20,4 +20,7 @@ public enum Figure {
         values().find { it.has(cards)}
     }
 
+    boolean higher(Figure other) {
+        this.compareTo(other) < 0;
+    }
 }

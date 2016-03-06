@@ -57,4 +57,9 @@ class FigureTestSpock extends Specification {
 		Figure.basingOn(cards) == Figure.PAIR
 	}
 
+	def "higher"() {
+		expect:
+		!Figure.PAIR.higher(Figure.FULL)
+		Figure.FULL.higher(Figure.PAIR)
+	}
 }
