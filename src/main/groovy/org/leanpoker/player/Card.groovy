@@ -1,8 +1,10 @@
 package org.leanpoker.player
 
 import groovy.transform.EqualsAndHashCode
+import groovy.transform.ToString
 
 @EqualsAndHashCode(includes = "rank")
+@ToString()
 class Card {
     Rank rank;
     Suit suit;
