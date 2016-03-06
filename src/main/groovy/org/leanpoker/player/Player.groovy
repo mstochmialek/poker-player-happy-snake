@@ -9,7 +9,6 @@ class Player {
             def myHand = hand2(gameState);
             return doBetRequest(myHand, [], gameState.minimum_raise)
         } catch (def e) {
-            e.printStackTrace()
             return 0
         }
     }
@@ -29,12 +28,6 @@ class Player {
 
     static def currentPlayer(def gameState) {
         gameState.players[gameState.in_action]
-    }
-
-    static String hand(def gameState) {
-        List myCarts = currentPlayer(gameState).hole_cards;
-
-        myCarts[0].rank + myCarts[1].rank;
     }
 
     static List<Card> hand2(def gameState) {

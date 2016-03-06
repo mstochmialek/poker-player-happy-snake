@@ -2,8 +2,8 @@ package org.leanpoker.player;
 
 public enum Suit {
     HEARTS("hearts"),
-    SPADES("spades"),
     DIAMONDS("diamonds"),
+    SPADES("spades"),
     CLUBS("clubs");
 
     String value;
@@ -14,5 +14,9 @@ public enum Suit {
 
     static Suit valueOfName( String name ) {
         values().find { it.value == name }
+    }
+
+    boolean higher(Suit other) {
+        this.compareTo(other) < 0;
     }
 }
