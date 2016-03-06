@@ -12,11 +12,19 @@ class Player {
             return gameState.minimum_raise
         }
 
+        if (myHand[0] == myHand[1]) {
+            return currentPlayer(gameState).stack
+        }
+
         0
     }
 
+    static def currentPlayer(def gameState) {
+        gameState.players[gameState.in_action]
+    }
+
     static String hand(def gameState) {
-        List myCarts = gameState.players[gameState.in_action].hole_cards;
+        List myCarts = currentPlayer(gameState).hole_cards;
 
         myCarts[0].rank + myCarts[1].rank;
     }
