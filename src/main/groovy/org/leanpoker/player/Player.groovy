@@ -61,11 +61,6 @@ class Player {
                     return Integer.MAX_VALUE
                 }
 
-
-                if (figure.higher(Figure.TWO_PAIR)) {
-                    return minimum + 20
-                }
-
                 if (figure == Figure.PAIR) {
                     return 0
                 }
