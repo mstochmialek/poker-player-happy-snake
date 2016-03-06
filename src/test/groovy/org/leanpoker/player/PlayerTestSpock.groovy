@@ -16,4 +16,6 @@ class PlayerTestSpock extends Specification {
 		expect:
 		Player.betRequest(gameState) == 240
 	}
+
+
 }
