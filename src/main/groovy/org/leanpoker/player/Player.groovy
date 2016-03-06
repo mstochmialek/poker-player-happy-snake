@@ -29,6 +29,13 @@ class Player {
         myCarts[0].rank + myCarts[1].rank;
     }
 
+    static List<Card> hand2(def gameState) {
+        List myCarts = currentPlayer(gameState).hole_cards;
+
+        return myCarts.collect( { new Card(it)});
+    }
+
+
     static void showdown(def gameState) {
     }
 }
