@@ -60,7 +60,7 @@ class Player {
                     return minimum + 20
                 }
 
-                if (figure == Figure.PAIR && (minimum >= (player.stack/2))) {
+                if (figure == Figure.PAIR && prob < 75) {
                     return 0
                 }
                 return minimum;
