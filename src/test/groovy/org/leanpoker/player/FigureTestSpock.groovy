@@ -12,7 +12,7 @@ import static org.leanpoker.player.Suit.CLUBS
  */
 class FigureTestSpock extends Specification {
 
-	def "full"() {
+	def "four"() {
 		given:
 
 		def cards = [
@@ -24,7 +24,7 @@ class FigureTestSpock extends Specification {
 		];
 
 		expect:
-		Figure.basingOn(cards) == Figure.FULL
+		Figure.basingOn(cards) == Figure.FOUR
 	}
 
 	def "three"() {
@@ -55,6 +55,36 @@ class FigureTestSpock extends Specification {
 
 		expect:
 		Figure.basingOn(cards) == Figure.PAIR
+	}
+
+	def "2 pairs"() {
+		given:
+
+		def cards = [
+				new Card(C04, HEARTS),
+				new Card(KING, SPADES),
+				new Card(C04, DIAMONDS),
+				new Card(C10, DIAMONDS),
+				new Card(KING, CLUBS)
+		];
+
+		expect:
+		Figure.basingOn(cards) == Figure.TWO_PAIR
+	}
+
+	def "house"() {
+		given:
+
+		def cards = [
+				new Card(ACE, HEARTS),
+				new Card(KING, SPADES),
+				new Card(ACE, DIAMONDS),
+				new Card(ACE, CLUBS),
+				new Card(KING, CLUBS)
+		];
+
+		expect:
+		Figure.basingOn(cards) == Figure.FULL
 	}
 
 	def "higher"() {

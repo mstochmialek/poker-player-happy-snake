@@ -1,8 +1,16 @@
 package org.leanpoker.player;
 
 public enum Figure {
-    FULL({ List<Card> cards -> hasMany(cards, 4) }),
+    FOUR({ List<Card> cards -> hasMany(cards, 4) }),
+    FULL({ List<Card> cards ->
+        Card three = cards.find {cards.count(it) >= 3}
+        three != null && cards.any { three != it && cards.count(it) >= 2}
+    }),
     THREE({ List<Card> cards -> hasMany(cards, 3) }),
+    TWO_PAIR ({ List<Card> cards ->
+        Card firstPair = cards.find {cards.count(it) >= 2}
+        cards.any { firstPair != it && cards.count(it) >= 2}
+    }),
     PAIR ({ List<Card> cards -> hasMany(cards, 2) }),
     HIGHCARD ({ true });
 
